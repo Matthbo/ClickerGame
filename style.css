@@ -1,0 +1,38 @@
+div.game{
+    font: "Verdana";
+}
+
+div.clickables{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 80%;
+    height: 90%;
+    background: grey;
+}
+
+div.upgrades{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 20%;
+    height: 100%;
+    background: grey;
+}
+
+div.weapons{
+    height: 50%;
+}
+
+div.armor{
+    height: 50%;
+}
+
+div.stats{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 80%;
+    height: 10%;
+    background: grey;
+}
