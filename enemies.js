@@ -26,7 +26,7 @@ function damageEnemy(){
 	if (monsterHealth <= 0) {
 		console.log('You killed it!');
 		monster = false;
-		level++;
+		levelUp();
 		statsDiv.innerHTML = 'Level: ' + level;
 		spawnEnemy(level);
 	};
@@ -36,7 +36,7 @@ function autoDamageEnemy(){
 	if (monsterHealth <= 0) {
 		console.log('You killed it!');
 		monster = false;
-		level++;
+		levelUp();
 		statsDiv.innerHTML = 'Level: ' + level;
 		spawnEnemy(level);
 	};
