@@ -1,5 +1,10 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
 div.game{
-    font: "Verdana";
+    font-family: "Verdana";
 }
 
 div.clickables{
@@ -8,7 +13,7 @@ div.clickables{
     left: 0px;
     width: 80%;
     height: 90%;
-    background: grey;
+    background-color: #303030;
 }
 
 div.upgrades{
@@ -17,7 +22,7 @@ div.upgrades{
     right: 0px;
     width: 20%;
     height: 100%;
-    background: grey;
+    background-color: #505050;
 }
 
 div.weapons{
@@ -33,6 +38,6 @@ div.stats{
     bottom: 0px;
     left: 0px;
     width: 80%;
-    height: 10%;
-    background: grey;
+    height: 15%;
+    background-color: #606060;
 }
