@@ -7,14 +7,16 @@ function spawnEnemy(level){//change to spawnRandomEnemy()
 		console.log("Created a monster");
 		monster = true;
 		//bepaalt de HP van het monster, dit kan ook gewoon met een static number. moet je maar ff kijken (nu doet hij tussen de 100 en 200 HP en dat keer het level)
-		monsterhealth = Math.floor((level * 100) + 100);
-		console.log(monsterHealth = monsterhealth * level);
+		monsterhealth = Math.floor((Math.random() * 50) + 100);
+        monsterHealth = Math.round(monsterhealth * level)
+		console.log(monsterHealth);
 		// monsterLocation.innerHTML creëert het monster(voor nu)
 		clickablesDiv.innerHTML = '<img onclick="damageEnemy();" src="images/bg1.1.png" />'; //dat brick though
 	} else if (monster == true) {
 		console.log("There already is a monster");//there will be 4 at the same time, max!
 	};
 }
+
 /*
 function spawnEnemy(level, type){
  // TODO   
@@ -27,7 +29,6 @@ function damageEnemy(){
 		console.log('You killed it!');
 		monster = false;
 		levelUp();
-		statsDiv.innerHTML = 'Level: ' + level;
 		spawnEnemy(level);
 	};
 }
@@ -40,7 +41,6 @@ function autoDamageEnemy(){
             console.log('You killed it!');
             monster = false;
             levelUp();
-            statsDiv.innerHTML = 'Level: ' + level;
             spawnEnemy(level);
         };
     }
