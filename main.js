@@ -1,10 +1,15 @@
 //player
 var playerHealth;
+var playerHealthMultiplier;
+var playerHealthTotal;
 var playerArmor;
 var playerClickDamage;
 var playerAutoDamage;
+var playerAutoDamageMultiplier;
+var playerAutoDamageTotal;
 
 var level;
+var coins;
 
 var version;
 
@@ -15,11 +20,21 @@ var weaponsDiv;
 var armorDiv;
 var statsDiv;
 
+function levelUp(){
+    level++;
+    playerHealthMultiplier *= 1.1;
+}
+
 function preInit(){
     playerHealth = 100;
+    playerHealthMultiplier = 1; //depends on level
+    playerHealthTotal = playerHealth * playerHealthMultiplier;
     playerArmor = 0;
     playerClickDamage = 10;
-    playerAutoDamage = 0;
+    playerAutoDamage = 0; // depends on weapon
+    playerAutoDamageMultiplier = 1;
+    playerAutoDamageTotal = playerAutoDamage * playerAutoDamageMultiplier;
+    coins = 0;
     level = 0;
     
     version = 0.1;
@@ -39,6 +54,10 @@ function init(){
             case 'stats': statsDiv = allDivs[i]; break;
         }
     }
+    
+    spawnEnemy(level);
+    statsDiv.innerHTML = 'Level: ' + level;
+    autoDamageEnemy();
 }
 
 preInit();
