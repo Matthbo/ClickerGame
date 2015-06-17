@@ -2,13 +2,17 @@
 <html>
     <head>
         <title>Welcome to the world of this clicker game!</title>
+        <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css" />
-        <script src="main.js"></script>
+        <script src="main.js">
+        
+        </script>
     </head>
     <body>
         <div class="game">
 
-            <div class="clickables">
+            <div id="monsterLoc" class="clickables">
+            	
             </div>
 
             <div class="upgrades">
@@ -42,8 +46,68 @@
                 </div>
             </div>
             
-            <div class="stats">
+            <div id="statDiv" class="stats">
             </div>
         </div>
     </body>
 </html>
+
+<script type="text/javascript">
+monsterLocation = document.getElementById("monsterLoc");
+statDiv = document.getElementById("statDiv");
+//Base monster values(voor nu), dit wordt verhoogt met een level multiplier
+var monsterHealth = 30;
+var monsterDamage = 2;
+var monster = false;
+var playerClickDamage = 10;
+var playerAutoDamage = 1;
+var playerAutoDamageMultiplier = 1;
+var level = 1;
+
+function createMonster(level){
+	if (monster == false) {
+		console.log("Created a monster");
+		monster = true;
+		//bepaalt de HP van het monster, dit kan ook gewoon met een static number. moet je maar ff kijken (nu doet hij tussen de 100 en 200 HP en dat keer het level)
+		monsterhealth = Math.floor((Math.random() * 200) + 100);
+		console.log(monsterHealth = monsterhealth * level);
+		// monsterLocation.innerHTML creëert het monster(voor nu)
+		monsterLocation.innerHTML = '<img onclick="damageMonster();" src="images/bg1.1.png">';
+	} else if (monster == true) {
+		console.log("There already is a monster");		
+	};
+}
+
+function damageMonster(){
+	monsterHealth -= playerClickDamage;
+	console.log('playerdamage: ' + monsterHealth);
+	if (monsterHealth <= 0) {
+		console.log('You killed it!');
+		monster = false;
+		level++;
+		statDiv.innerHTML = 'Je huidige level is: ' + level;
+		createMonster(level);
+	};
+}
+
+function autoDamageMonster(){
+	if (monsterHealth <= 0) {
+		console.log('You killed it!');
+		monster = false;
+		level++;
+		statDiv.innerHTML = 'Je huidige level is: ' + level;
+		createMonster(level);
+	};
+	//berekend de schade doormiddel van de autodamage(standaart 1) keer(of plus als je dat wilt) de multiplier(upgrades) te doen
+	playerAutoDamage = playerAutoDamage * playerAutoDamageMultiplier;
+	monsterHealth = monsterHealth - playerAutoDamage;
+	console.log('autodamage: ' + monsterHealth);
+	//dit herlaad de functie iedere seconde en voert de berekende schade uit
+	setTimeout(autoDamageMonster,1000);
+}
+
+// het eerste monster wordt hier gespawned
+createMonster(level);
+autoDamageMonster();
+statDiv.innerHTML = 'Je huidige level is: ' + level;
+</script>
