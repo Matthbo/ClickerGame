@@ -2,6 +2,8 @@
 var playerHealth;
 var playerHealthMultiplier;
 var playerHealthTotal;
+var playerHealthMax;
+var playerHealthMaxTotal;
 var playerArmor;
 var playerClickDamage;
 var playerAutoDamage;
@@ -25,10 +27,18 @@ function levelUp(){
     playerHealthMultiplier *= 1.1;
 }
 
+
+function update(){
+    
+	setTimeout(update, 100)
+}
+
 function preInit(){
     playerHealth = 100;
     playerHealthMultiplier = 1; //depends on level
+    playerHealthMax = 100;
     playerHealthTotal = playerHealth * playerHealthMultiplier;
+    playerHealthMaxTotal = playerHealthMax * playerHealthMultiplier;
     playerArmor = 0;
     playerClickDamage = 10;
     playerAutoDamage = 0; // depends on weapon
@@ -58,11 +68,6 @@ function init(){
     spawnEnemy(level);
     statsDiv.innerHTML = 'Level: ' + level;
     autoDamageEnemy();
-}
-
-function update(){
-	setTimeout(update, 100)
-	console.log("update");
 }
 
 preInit();
