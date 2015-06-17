@@ -33,6 +33,7 @@ div.weapons{
 div.armor{
     height: 50%;
     overflow-y: scroll;
+    background-color: #555555;
 }
 
 div.stats{
