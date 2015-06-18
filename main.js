@@ -22,6 +22,12 @@ var weaponsDiv;
 var armorDiv;
 var statsDiv;
 
+//monsters
+var monster1;
+var monster2;
+var monster3;
+var monster4;
+
 //stats
 var levelStat;
 var healthStat;
@@ -78,6 +84,11 @@ function preInit(){
             case 'stats': statsDiv = allDivs[i]; break;
         }
     }
+    monster1 = document.getElementById("monster1");
+    monster2 = document.getElementById("monster2");
+    monster3 = document.getElementById("monster3");
+    monster4 = document.getElementById("monster4");
+    
     levelStat = document.getElementById("level");
     healthStat = document.getElementById("health");
     dpcStat = document.getElementById("dpc");
@@ -86,11 +97,9 @@ function preInit(){
 
 function init(){
     //load database stuff here (if it exists for this player)
-    //todo: start the game, game logic, enemies, all the things!
     
-    spawnEnemy(level);
-    //statsDiv.innerHTML = 'Level: ' + level;
-    autoDamageEnemy();
+    spawnRandomEnemy(level, Math.round(Math.random() * 3 + 1)); //math.round if needed
+    //autoDamageEnemy();
     update();
 }
 
